@@ -1,0 +1,57 @@
+#!/bin/sh
+#
+#chkconfig: 345 99 01
+#
+#
+#description: Service script for >Nagios Mail ACK
+#
+# source function library
+. /etc/rc.d/init.d/functions
+
+#setting up script var
+nagPath=/usr/local/bin/nagMailAck
+
+if [ ! -e $nagPath/nagMailACK.rb ]; then
+	echo "nagMailACK.rb not found @"$nagPath"/"
+	exit 1
+elif [ ! -e $nagPath/nagiosACK.pl ]; then
+	echo "nagioACK.pl not found @"$nagPath"/"
+	exit 1
+elif [ ! -e $nagPath/nagMailAck.sh ]; then
+	echo "nagMailAck.sh not found @"$nagPath"/"
+	exit 1
+fi
+
+#calling
+case "$1" in
+        start)
+                echo "Starting Nagios Mail ACK"
+                daemon $nagPath/nagMailAck.sh $nagPath 
+                echo -n "-----"
+		echo
+                touch /var/lock/subsys/nagMailACK
+                ;;
+        stop)
+                echo "Stopping Nagios Mail ACK"
+		#killing all instances existing of this
+		ps aux | grep 'ruby /usr/local/bin/nagMailAck/nagMailACK.rb' | awk '{if($11!="grep"){system("kill -9 " $2);}}'                
+		echo -n "-----"
+		echo
+                rm -f /var/lock/subsys/nagMailACK
+                ;;
+        status)
+                #status Nagios Mail ACK
+				countNagMAInstance=`ps aux | grep 'ruby /usr/local/bin/nagMailAck/nagMailACK.rb' | awk '{if($11!="grep"){print $0;}}' | wc -l`
+                echo $countNagMAInstance " instance(s) of nagMailACK are running"   
+		echo -n "-----"
+		echo
+                ;;
+        restart)
+                $0 stop
+                $0 start
+                ;;
+        *)
+                echo "Usage: $0 {start|stop|status|restart}"
+                exit 1
+esac
+exit 0
