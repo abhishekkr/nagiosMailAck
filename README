@@ -1,0 +1,19 @@
+abkLabs
+-by, AbhishekKr
+http://sites.google.com/abhikumar163
+http://www.twitter.com/aBionic
+======================================
+
+CONTENTS
+----------------------------------
+1#. NagiosMailACK
+BriefDescription: its an add-on service to Nagios (http://www.nagios.com/); an IT infrastructure monitoring solution. This service enables it to have a remote Alert-Acknowledgment Service by replying to Alert Mails without setting up a mail server of own. It lets you use any GMail A/C for that.
+FOR MORE READ THE DOCUMENTATION INSIDE THAT DIR
+
+======================================
+
+
+
+
+
+
