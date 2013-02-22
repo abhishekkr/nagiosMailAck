@@ -1,7 +1,7 @@
 # NagiosMailAck
 
 its an add-on service to Nagios (http://www.nagios.com/); an IT infrastructure monitoring solution. This service enables it to have a remote Alert-Acknowledgment Service by replying to Alert Mails without setting up a mail server of own. It lets you use any GMail A/C for that.
-FOR MORE READ: https://github.com/abhishekkr/nagiosMailAck/blob/master/DETAILS.md
+
 
 ## Installation
 
@@ -19,7 +19,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    https://github.com/abhishekkr/nagiosMailAck/blob/master/USAGE.md
+
 
 ## Contributing
 
