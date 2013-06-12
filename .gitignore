@@ -3,3 +3,6 @@ pkg
 *.gem
 Gemfile.lock
 tmp
+*swo
+*swp
+*un~
